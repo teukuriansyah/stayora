@@ -6,7 +6,7 @@ function Layout(props) {
     return (
         <div>
             <Navbar />
-            <div className="py-6 px-8">
+            <div className="py-6 px-8 bg-gray-50">
                 <Outlet />
             </div>
             <Footer />

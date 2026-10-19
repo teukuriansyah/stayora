@@ -1,9 +1,9 @@
 import React from 'react'
-import { MapPin, Star, Calendar } from 'lucide-react'
+import { MapPin, Star } from 'lucide-react'
 
 export default function Card() {
   return (
-    <div className="border border-gray-300 rounded-lg max-w-sm">
+    <div className="border border-gray-300 bg-white rounded-lg max-w-sm">
       {/* Image */}
       <div className="bg-gray-200 h-48 rounded-md mb-4 flex items-center justify-center text-gray-500">Image</div>
 

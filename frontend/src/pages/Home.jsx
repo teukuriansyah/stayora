@@ -11,22 +11,22 @@ export default function Home() {
         </div>
         <div className="mt-6">
           <form>
-            <div className="flex justify-between">
-              <div>
+            <div className="flex justify-between gap-5">
+              <div className="w-full">
                 <label>City place to go</label>
                 <div className="border border-gray-500 rounded px-3 py-1 flex items-center gap-2">
                   <MapPin className="w-5 h-5 text-gray-500" />
                   <input type="text" placeholder="City place to go" className="outline-0" />
                 </div>
               </div>
-              <div>
+              <div className="w-full">
                 <label>Check-In & Check-out Date</label>
                 <div className="border border-gray-500 rounded px-3 py-1 flex items-center gap-2">
                   <Calendar className="w-5 h-5 text-gray-500" />
                   <input type="text" placeholder="Check-In & Check-out Dates" className="outline-0" />
                 </div>
               </div>
-              <div>
+              <div className="w-full">
                 <label>Guests and Rooms</label>
                 <div className="border border-gray-500 rounded px-3 py-1 flex items-center gap-2">
                   <User className="w-5 h-5 text-gray-500" />
