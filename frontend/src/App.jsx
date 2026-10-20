@@ -5,6 +5,7 @@ import Search from "./pages/Search"
 import Detail from "./pages/Detail"
 import Checkout from "./pages/Checkout"
 import Booked from "./pages/Booked"
+import MyBooking from "./pages/MyBooking"
 import "./index.css"
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/search" element={<Search/>} />
           <Route path="/checkout" element={<Checkout/>} />
           <Route path="/booked" element={<Booked/>} />
+          <Route path="/my-booking" element={<MyBooking/>} />
         </Route>
       </Routes>
     </BrowserRouter>
