@@ -1,5 +1,6 @@
-import hotel from "../models/hotel.js"
-import roomType from "../models/roomType.js"
+import db from "../models/index.js"
+
+const { hotel, roomType } = db
 
 export async function getAllDataHotel(req,res) {
   const data = await hotel.findAll()
@@ -8,6 +9,6 @@ export async function getAllDataHotel(req,res) {
 
 export async function getDataHotelById(req,res) {
   const id = req.params.id
-  const data = await roomType.findOne({ where:{ hotelId:id } })
+  const data = await roomType.findAll({ where:{ idHotel:id } })
   res.status(200).json({ status:200,data:data,message:`Get data with id ${id} successfull` })
 }

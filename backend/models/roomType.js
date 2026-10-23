@@ -1,8 +1,7 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+import { Model } from "sequelize"
+
+export default (sequelize, DataTypes) => {
   class roomType extends Model {
     /**
      * Helper method for defining associations.
@@ -15,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   roomType.init({
     idRoom: DataTypes.STRING,
-    hotelId: DataTypes.STRING,
+    idHotel: DataTypes.STRING,
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     basePrice: DataTypes.INTEGER,

@@ -1,6 +1,7 @@
+'use strict';
 import { Model } from "sequelize"
 
-export default function hotel (sequelize, DataTypes) {
+export default (sequelize, DataTypes) => {
   class hotel extends Model {
     /**
      * Helper method for defining associations.
@@ -18,8 +19,9 @@ export default function hotel (sequelize, DataTypes) {
     description: DataTypes.STRING,
     city: DataTypes.STRING,
     address: DataTypes.STRING,
-    starRating: DataTypes.DECIMAL,
-    avgRating: DataTypes.DECIMAL,
+    starRating: DataTypes.FLOAT,
+    avgRating: DataTypes.FLOAT,
+    reviewCount: DataTypes.INTEGER,
     pricePerNight: DataTypes.INTEGER,
     imageUrl: DataTypes.STRING,
     amenities: DataTypes.STRING

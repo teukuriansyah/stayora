@@ -1,32 +1,49 @@
-const roomType = {
+'use strict';
+/** @type {import('sequelize-cli').Migration} */
+export default {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('roomTypes', {
+    await queryInterface.createTable('hotels', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idRoom: {
-        type: Sequelize.STRING
-      },
-      hotelId: {
+      idHotel: {
         type: Sequelize.STRING
       },
       name: {
         type: Sequelize.STRING
       },
+      slug: {
+        type: Sequelize.STRING
+      },
       description: {
         type: Sequelize.STRING
       },
-      basePrice: {
+      city: {
+        type: Sequelize.STRING
+      },
+      address: {
+        type: Sequelize.STRING
+      },
+      starRating: {
+        type: Sequelize.FLOAT
+      },
+      avgRating: {
+        type: Sequelize.FLOAT
+      },
+      reviewCount: {
         type: Sequelize.INTEGER
       },
-      capacity: {
+      pricePerNight: {
         type: Sequelize.INTEGER
       },
-      totalInventory: {
-        type: Sequelize.INTEGER
+      imageUrl: {
+        type: Sequelize.STRING
+      },
+      amenities: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -39,8 +56,6 @@ const roomType = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('roomTypes');
+    await queryInterface.dropTable('hotels');
   }
 };
-
-export default roomType
