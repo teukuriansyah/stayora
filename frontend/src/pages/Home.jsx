@@ -1,7 +1,16 @@
 import { MapPin, Calendar, User } from "lucide-react"
+import { useState, useEffect } from "react"
+import { getAllData } from "../services/Services.js"
 import Card from "../components/Card"
 
 export default function Home() {
+  const [datas,setDatas] = useState([])
+
+  const fetchingData = async () => {
+    const { data } = await getAllData()
+    console.log(data)
+    setDatas(data)
+  }
   return (
     <div>
       <div>
