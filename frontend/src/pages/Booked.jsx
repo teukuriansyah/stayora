@@ -2,6 +2,7 @@ import React from 'react'
 import { Check } from 'lucide-react';
 
 export default function Booked() {
+  const d = new Date()
   return (
     <div className='flex'>
       <div className='w-1/2'>
@@ -24,8 +25,8 @@ export default function Booked() {
                   <span className='font-medium'>Check-out</span>
                 </div>
                 <div className='flex flex-col gap-1'>
-                  <span>Check-in</span>
-                  <span>Check-out</span>
+                  <span>{`${d.getDate()}/${d.getMonth()}/${d.getFullYear}`}</span>
+                  <span>{`${d.getDate()+1}/${d.getMonth()}/${d.getFullYear}`}</span>
                 </div>
               </div>
             </div>

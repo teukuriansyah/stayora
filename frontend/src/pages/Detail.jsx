@@ -13,6 +13,15 @@ export default function Detail() {
     setDatas(data)
   }
 
+  const booking = (name,city,price) => {
+    const data = {
+      name:name,
+      city:city,
+      price:price
+    }
+    localStorage.setItem("data",data)
+  }
+
   useEffect(() => {
     fetching()
   }, [])
@@ -21,29 +30,29 @@ export default function Detail() {
     <div>
       {/* Image */}
       <div>
-        <img src={datas.imageUrl} alt="Image hotel" className="w-full object-cover h-48 rounded-md"/>
+        <img src={datas?.imageUrl} alt="Image hotel" className="w-full object-cover h-48 rounded-md"/>
       </div>
       
       {/* Title */}
       <div className="mt-8 flex justify-between items-start">
         <div className="flex flex-col gap-3">
           <div>
-            <h2 className="text-4xl font-semibold">{datas.name}</h2>
+            <h2 className="text-4xl font-semibold">{datas?.name}</h2>
           </div>
           <div className="flex gap-3">
             <div>
-              <span className="font-medium">{datas.avgRating}</span>
+              <span className="font-medium">{datas?.avgRating}</span>
               <span className="text-gray-400 text-sm">/5</span>
-              <span> ({datas.reviewCount} reviews)</span>
+              <span> ({datas?.reviewCount} reviews)</span>
             </div>
             <div><span>•</span></div>
             <div>
-              {datas.city}
+              {datas?.city}
             </div>
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <h3 className="text-2xl font-semibold">${datas.pricePerNight}</h3>
+          <h3 className="text-2xl font-semibold">${datas?.pricePerNight}</h3>
           <span className="text-sm text-gray-400">/room/night</span>
           <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2">See rooms</button>
         </div>
@@ -52,7 +61,7 @@ export default function Detail() {
       {/* Description*/}
       <div className="mt-6">
         <h5 className="font-semibold text-xl">About Hotel</h5>
-        <p>{datas.description}</p>
+        <p>{datas?.description}</p>
       </div>
 
       {/* Fasilities */}
@@ -77,7 +86,7 @@ export default function Detail() {
           <h2 className="text-xl font-medium">Available Sanctuary</h2>
         </div>
         <div className="mt-2 flex flex-col gap-3">
-          {datas?.dataRoom?.map((d,i) => <ListDetail title={d.name} description={d.description} price={d.basePrice}/>)}
+          {datas?.dataRoom?.map((d,i) => <ListDetail title={d.name} description={d.description} price={d.basePrice} book={() => booking(d.name,datas?.city,d.pricePerNight)}/>)}
         </div>
       </div>
     </div>

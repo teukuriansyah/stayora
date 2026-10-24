@@ -17,7 +17,7 @@ export default function ListDetail(props) {
             <span className="text-gray-500"> /night</span>
           </div>
           <div>
-            <button className='w-1/4 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg py-2 px-3 transition-colors'>Reserve this</button>
+            <button className='w-1/4 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg py-2 px-3 transition-colors' onClick={props.book}>Reserve this</button>
           </div>
         </div>
       </div>

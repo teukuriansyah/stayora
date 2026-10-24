@@ -1,6 +1,30 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function Checkout() {
+  const navigate = useNavigate()
+  const [datas,setDatas] = useState([])
+  const [name,setName] = useState("")
+  const [email,setEmail] = useState("")
+  const [phone,setPhone] = useState("")
+  const [nameCard,setNameCard] = useState("")
+  const [cardNumber,setCardNumber] = useState("")
+  const [validUntilOne,setValidUntilOne] = useState("")
+  const [validUntilTwo,setValidUntilTwo] = useState("")
+
+  const fetching = () => {
+    const data = localStorage.getItem("data")
+    if(data !== null) {
+      setDatas(data)
+    }
+    else {
+      navigate("/")
+    }
+  }
+
+  useEffect(() => {
+    fetching()
+  },[])
   return (
     <div className="flex">
       {/* Personal data */}
@@ -13,15 +37,15 @@ export default function Checkout() {
           <div className="mt-2 flex flex-col gap-3">
             <div className="flex flex-col">
               <label>First and Last name</label>
-              <input type="text" className="outline-0 border border-gray-500 rounded-xl px-4 py-1"/>
+              <input type="text" className="outline-0 border border-gray-500 rounded-xl px-4 py-1" value={name} onChange={e => setName(e.target.value)}/>
             </div>
             <div className="flex flex-col">
               <label>Email address</label>
-              <input type="email" className="outline-0 border border-gray-500 rounded-xl px-4 py-1"/>
+              <input type="email" className="outline-0 border border-gray-500 rounded-xl px-4 py-1" value={email} onChange={e => setEmail(e.target.value)}/>
             </div>
             <div className="flex flex-col">
               <label>Phone number</label>
-              <input type="tel" className="outline-0 border border-gray-500 rounded-xl px-4 py-1"/>
+              <input type="tel" className="outline-0 border border-gray-500 rounded-xl px-4 py-1" value={phone} onChange={e => setPhone(e.target.value)}/>
             </div>
           </div>
         </div>
@@ -32,17 +56,17 @@ export default function Checkout() {
           <div className="mt-2 flex flex-col gap-3">
             <div className="flex flex-col">
               <label>Name on card</label>
-              <input type="text" className="outline-0 border border-gray-500 rounded-xl px-4 py-1"/>
+              <input type="text" className="outline-0 border border-gray-500 rounded-xl px-4 py-1" value={nameCard} onChange={e => setNameCard(e.target.value)}/>
             </div>
             <div className="flex flex-col">
               <label>Card number</label>
-              <input type="number" className="outline-0 border border-gray-500 rounded-xl px-4 py-1"/>
+              <input type="number" className="outline-0 border border-gray-500 rounded-xl px-4 py-1" value={cardNumber} onChange={e => setCardNumber(e.target.value)}/>
             </div>
             <div className="flex flex-col">
               <label>Valid until</label>
               <div className="flex gap-3 items-center">
-                <input type="number" className="outline-0 border border-gray-500 rounded-xl w-1/2 px-4 py-1"/>
-                <input type="number" className="outline-0 border border-gray-500 rounded-xl w-1/2 px-4 py-1"/>
+                <input type="number" className="outline-0 border border-gray-500 rounded-xl w-1/2 px-4 py-1" value={validUntilOne} onChange={e => setValidUntilOne(e.target.value)} />
+                <input type="number" className="outline-0 border border-gray-500 rounded-xl w-1/2 px-4 py-1" value={validUntilTwo} onChange={e => setValidUntilTwo(e.target.value)}/>
               </div>
             </div>
           </div>
@@ -69,8 +93,8 @@ export default function Checkout() {
                   <span className='font-medium'>Check-out</span>
                 </div>
                 <div className='flex flex-col gap-1'>
-                  <span>Check-in</span>
-                  <span>Check-out</span>
+                  <span>{`${d.getDate()}/${d.getMonth()}/${d.getFullYear}`}</span>
+                  <span>{`${d.getDate()+1}/${d.getMonth()}/${d.getFullYear}`}</span>
                 </div>
               </div>
             </div>
@@ -91,7 +115,7 @@ export default function Checkout() {
             {/* Total */}
             <div className='flex w-3/5 justify-between mt-4 border-t border-gray-400'>
               <span className='font-medium'>Total</span>
-              <span className='font-medium'>Rp. 000</span>
+              <span className='font-medium'>$</span>
             </div>
           </div>
         </div>

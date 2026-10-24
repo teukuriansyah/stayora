@@ -61,7 +61,7 @@ export default function Home() {
           </div>
         </div>
         <div className="grid grid-cols-4 gap-4 mt-8">
-          {datas.map((d,i) => <Card key={i} image={d.imageUrl} lokasi={d.city} rating={d.avgRating} count={d.reviewCount} name={d.name} price={d.pricePerNight} id={d.idHotel}/>)}
+          {datas?.map((d,i) => <Card key={i} image={d.imageUrl} lokasi={d.city} rating={d.avgRating} count={d.reviewCount} name={d.name} price={d.pricePerNight} id={d.idHotel}/>)}
         </div>
       </div>
     </div>
