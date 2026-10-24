@@ -9,6 +9,7 @@ export default function Home() {
   const fetchingData = async () => {
     const { data } = await getAllData()
     setDatas(data)
+    localStorage.removeItem("dataBooked")
   }
 
   useEffect(() => {

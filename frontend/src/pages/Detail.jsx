@@ -1,15 +1,15 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useState, useEffect } from "react"
 import { getDataById } from "../services/Services.js"
 import ListDetail from "../components/ListDetail.jsx"
 
 export default function Detail() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const [datas, setDatas] = useState([])
 
   const fetching = async () => {
     const { data } = await getDataById(id)
-    console.log(data)
     setDatas(data)
   }
 
@@ -19,7 +19,8 @@ export default function Detail() {
       city:city,
       price:price
     }
-    localStorage.setItem("data",data)
+    localStorage.setItem("data",JSON.stringify(data))
+    navigate('/checkout')
   }
 
   useEffect(() => {
@@ -86,7 +87,7 @@ export default function Detail() {
           <h2 className="text-xl font-medium">Available Sanctuary</h2>
         </div>
         <div className="mt-2 flex flex-col gap-3">
-          {datas?.dataRoom?.map((d,i) => <ListDetail title={d.name} description={d.description} price={d.basePrice} book={() => booking(d.name,datas?.city,d.pricePerNight)}/>)}
+          {datas?.dataRoom?.map((d,i) => <ListDetail key={i} title={d.name} description={d.description} price={d.basePrice} book={() => booking(d.name,datas?.city,d.basePrice)}/>)}
         </div>
       </div>
     </div>

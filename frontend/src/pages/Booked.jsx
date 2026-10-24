@@ -1,8 +1,25 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { Check } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Booked() {
   const d = new Date()
+  const navigate = useNavigate()
+  const [datas,setDatas] = useState("")
+
+  const fetching = () => {
+    const data = localStorage.getItem("dataBooked")
+    if(data !== null) {
+      setDatas(JSON.parse(data))
+    }
+    else{
+      navigate("/")
+    }
+  }
+
+  useEffect(() => {
+    fetching()
+  },[])
   return (
     <div className='flex'>
       <div className='w-1/2'>
@@ -17,7 +34,7 @@ export default function Booked() {
             {/* Title hotel */}
             <div>
               <div>
-                <h2 className='text-xl font-medium'>Judul hotel</h2>
+                <h2 className='text-xl font-medium'>{datas?.hotel.name}</h2>
               </div>
               <div className='mt-6 flex gap-8'>
                 <div className='flex flex-col gap-1'>
@@ -25,8 +42,8 @@ export default function Booked() {
                   <span className='font-medium'>Check-out</span>
                 </div>
                 <div className='flex flex-col gap-1'>
-                  <span>{`${d.getDate()}/${d.getMonth()}/${d.getFullYear}`}</span>
-                  <span>{`${d.getDate()+1}/${d.getMonth()}/${d.getFullYear}`}</span>
+                  <span>{`${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`}</span>
+                  <span>{`${d.getDate()+1}/${d.getMonth()}/${d.getFullYear()}`}</span>
                 </div>
               </div>
             </div>
@@ -55,7 +72,7 @@ export default function Booked() {
                     <span className='font-medium'>Telephone</span>
                 </div>
                 <div className='flex flex-col gap-1'>
-                    <span>Hotel address</span>
+                    <span>{datas?.hotel?.city}</span>
                     <span>Email</span>
                     <span>Telephone</span>
                 </div>
