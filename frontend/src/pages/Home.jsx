@@ -8,9 +8,12 @@ export default function Home() {
 
   const fetchingData = async () => {
     const { data } = await getAllData()
-    console.log(data)
     setDatas(data)
   }
+
+  useEffect(() => {
+    fetchingData()
+  },[])
   return (
     <div>
       <div>
@@ -58,13 +61,7 @@ export default function Home() {
           </div>
         </div>
         <div className="grid grid-cols-4 gap-4 mt-8">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {datas.map((d,i) => <Card key={i} image={d.imageUrl} lokasi={d.city} rating={d.avgRating} count={d.reviewCount} name={d.name} price={d.pricePerNight} id={d.idHotel}/>)}
         </div>
       </div>
     </div>

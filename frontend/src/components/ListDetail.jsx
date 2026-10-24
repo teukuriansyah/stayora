@@ -1,6 +1,4 @@
-import React from 'react'
-
-export default function ListDetail() {
+export default function ListDetail(props) {
   return (
     <div className="flex gap-4 bg-white rounded-xl">
       <div className="w-1/3">
@@ -8,14 +6,14 @@ export default function ListDetail() {
       </div>
       <div className="p-5 flex flex-col justify-between">
         <div>
-          <h1 className="text-xl font-light">Room title</h1>
+          <h1 className="text-xl font-light">{props.title}</h1>
         </div>
         <div>
-          <p className="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tristique tortor in interdum pretium. Suspendisse ultrices gravida bibendum. </p>
+          <p className="text-sm">{props.description}</p>
         </div>
         <div className="mt-7 flex flex-col gap-1">
           <div>
-            <span className="text-xl font-medium">Rp. 1.000.000</span>
+            <span className="text-xl font-medium">${props.price}</span>
             <span className="text-gray-500"> /night</span>
           </div>
           <div>

@@ -34,7 +34,7 @@ const files = fs.readdirSync(__dirname).filter(file => {
 });
 
 for (const file of files) {
-  const modelModule = await import(path.join('file://', __dirname, file));
+  const modelModule = await import(new URL(file, import.meta.url));
   const model = modelModule.default(sequelize, Sequelize.DataTypes);
   db[model.name] = model;
 }

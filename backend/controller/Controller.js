@@ -9,6 +9,7 @@ export async function getAllDataHotel(req,res) {
 
 export async function getDataHotelById(req,res) {
   const id = req.params.id
-  const data = await roomType.findAll({ where:{ idHotel:id } })
-  res.status(200).json({ status:200,data:data,message:`Get data with id ${id} successfull` })
+  const dataHotel = await hotel.findOne({ where:{ idHotel:id }, raw:true })
+  const dataRoom = await roomType.findAll({ where:{ idHotel:id }, raw:true })
+  res.status(200).json({ status:200,data:{...dataHotel,dataRoom:dataRoom},message:`Get data with id ${id} successfull` })
 }
